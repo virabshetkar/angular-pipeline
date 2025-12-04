@@ -11,7 +11,7 @@ jobs:
         with: 
           node-version: '24'
           check-latest: true
-          cache: true          
+          cache: 'npm'          
           
       - name: Install
         run: npm ci
