@@ -7,4 +7,4 @@ jobs:
     runs-on: [self-hosted, build]
     steps:
       - name: Print hello
-        run: echo "Hello $USER - " {{GITHUB_RUN_NUMBER}}
+        run: echo "Hello $USER - $GITHUB_RUN_NUMBER"
