@@ -25,4 +25,4 @@ jobs:
       - name: Zip files
         run: |
           mkdir -p ./artifacts/
-          zip ./dist ./artifacts/dist.zip
+          zip ./artifacts/dist.zip ./dist
