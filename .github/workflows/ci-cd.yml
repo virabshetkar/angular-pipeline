@@ -1,0 +1,16 @@
+name: CI/CD
+
+on: workflow_dispatch
+
+jobs: 
+  build:
+    runs-on: [self-hosted, build]
+    steps:
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Zip files
+        run: |
+          mkdir -p ./artifacts/
+          zip ./dist ./artifacts/dist.zip
