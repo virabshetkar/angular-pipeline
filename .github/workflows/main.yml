@@ -1,0 +1,10 @@
+name: Hello World
+
+on: workflow_dispatch
+
+jobs:
+  hello-world:
+    runs-on: [self-hosted, build]
+    steps:
+      - name: Print hello
+        run: echo "Hello $USER"
