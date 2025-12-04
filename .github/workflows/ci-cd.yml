@@ -26,3 +26,16 @@ jobs:
         run: |
           mkdir -p ./artifacts/
           zip ./artifacts/dist.zip ./dist
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-zip
+          path: ./artifacts/dist.zip
+
+  deploy:
+    runs-on: [self-hosted, release]
+    environment: production
+    steps: 
+      - name: Print Hello
+        run: echo "HELLO $USER"
