@@ -36,6 +36,15 @@ jobs:
   deploy:
     runs-on: [self-hosted, release]
     environment: production
+    needs: build
     steps: 
       - name: Print Hello
         run: echo "HELLO $USER"
+      - name: Download Artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: dist-zip
+          path: .
+      - name: UnZip Artifact
+        run: unzip ./dist.zip
+          
