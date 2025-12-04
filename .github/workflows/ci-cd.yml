@@ -25,7 +25,7 @@ jobs:
       - name: Zip files
         run: |
           mkdir -p ./artifacts/
-          zip ./artifacts/dist.zip ./dist
+          zip -r ./artifacts/dist.zip ./dist
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
