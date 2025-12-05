@@ -25,7 +25,7 @@ jobs:
       - name: Zip files
         run: |
           mkdir -p ./artifacts/
-          zip -r ./artifacts/dist.zip ./dist/angular-pipeline/browser
+          zip -r ./artifacts/dist.zip ./dist/angular-pipeline/browser/*
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -46,5 +46,7 @@ jobs:
           name: dist-zip
           path: .
       - name: UnZip Artifact
-        run: unzip ./dist.zip
+        run: |
+          mkdir -p "/var/www/angular-pipeline/release-$GITHUB_RUN_NUMBER/"
+          unzip ./dist.zip -d "/var/www/angular-pipeline/release-$GITHUB_RUN_NUMBER/"
           
