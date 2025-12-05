@@ -25,7 +25,8 @@ jobs:
       - name: Zip files
         run: |
           mkdir -p ./artifacts/
-          zip -r ./artifacts/dist.zip ./dist/angular-pipeline/browser/*
+          cd ./dist/angular-pipeline/browser
+          zip -r ./artifacts/dist.zip ./*
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
