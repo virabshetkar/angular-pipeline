@@ -50,4 +50,5 @@ jobs:
         run: |
           mkdir -p "/var/www/angular-pipeline/release-$GITHUB_RUN_NUMBER/"
           unzip ./dist.zip -d "/var/www/angular-pipeline/release-$GITHUB_RUN_NUMBER/"
-          
+      - name: Link Current
+        run: ln -sf "/var/www/angular-pipeline/release-$GITHUB_RUN_NUMBER" "/var/www/angular-pipeline/current"
