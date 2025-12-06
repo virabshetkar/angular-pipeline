@@ -11,8 +11,8 @@ on:
 jobs:
   redeploy:
     runs-on: [self-hosted, release]
-    env: 
-      RELEASE_DIR: ${{secrets.RELEASE_DIR}}
+    env:
+      RELEASE_DIR: ${{ secrets.RELEASE_DIR }}
     steps:
       - name: Re link
-        run: echo "$RELEASE_DIR/release-${{inputs.release_no}}" "<--" "$RELEASE_DIR/current"
+        run: ln -sfn "$RELEASE_DIR/release-${{inputs.release_no}}" "$RELEASE_DIR/current"
