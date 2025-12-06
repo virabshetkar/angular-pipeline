@@ -15,4 +15,4 @@ jobs:
       RELEASE_DIR: ${{secrets.RELEASE_DIR}}
     steps:
       - name: Re link
-        run: echo "$RELEASE_DIR/release-${{inputs.release_no}}" <-- "$RELEASE_DIR/current"
+        run: echo "$RELEASE_DIR/release-${{inputs.release_no}}" "<--" "$RELEASE_DIR/current"
