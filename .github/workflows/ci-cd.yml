@@ -57,7 +57,7 @@ jobs:
   deploy-production:
     runs-on: [self-hosted, release, production]
     environment: production
-    needs: build
+    needs: [build, deploy-staging]
     env:
       RELEASE_DIR: ${{ secrets.RELEASE_DIR }}
     steps: 
