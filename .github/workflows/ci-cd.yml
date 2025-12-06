@@ -47,8 +47,10 @@ jobs:
           name: dist-zip
           path: .
       - name: UnZip Artifact
+        env:
+          RELEASE_DIR: ${{ secrets.RELEASE_DIR }}
         run: |
-          mkdir -p "/var/www/angular-pipeline/release-$GITHUB_RUN_NUMBER/"
-          unzip ./dist.zip -d "/var/www/angular-pipeline/release-$GITHUB_RUN_NUMBER/"
+          mkdir -p "$RELEASE_DIR/release-$GITHUB_RUN_NUMBER/"
+          unzip ./dist.zip -d "$RELEASE_DIR/release-$GITHUB_RUN_NUMBER/"
       - name: Link Current
-        run: ln -sfn "/var/www/angular-pipeline/release-$GITHUB_RUN_NUMBER" "/var/www/angular-pipeline/current"
+        run: ln -sfn "$RELEASE_DIR/release-$GITHUB_RUN_NUMBER" "$RELEASE_DIR/current"
