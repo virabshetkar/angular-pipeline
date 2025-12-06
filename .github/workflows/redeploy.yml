@@ -11,6 +11,7 @@ on:
 jobs:
   redeploy:
     runs-on: [self-hosted, release]
+    environment: production
     env:
       RELEASE_DIR: ${{ secrets.RELEASE_DIR }}
     steps:
