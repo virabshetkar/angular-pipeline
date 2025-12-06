@@ -33,9 +33,29 @@ jobs:
         with:
           name: dist-zip
           path: ./artifacts/dist.zip
+  deploy-staging:
+    runs-on: [self-hosted, release, staging]
+    environment: staging
+    needs: build
+    env:
+      RELEASE_DIR: ${{ secrets.RELEASE_DIR }}
+    steps: 
+      - name: Print Hello
+        run: echo "HELLO $USER"
+      - name: Download Artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: dist-zip
+          path: .
+      - name: UnZip Artifact
+        run: |
+          mkdir -p "$RELEASE_DIR/release-$GITHUB_RUN_NUMBER/"
+          unzip ./dist.zip -d "$RELEASE_DIR/release-$GITHUB_RUN_NUMBER/"
+      - name: Link Current
+        run: ln -sfn "$RELEASE_DIR/release-$GITHUB_RUN_NUMBER" "$RELEASE_DIR/current"
 
-  deploy:
-    runs-on: [self-hosted, release]
+  deploy-production:
+    runs-on: [self-hosted, release, production]
     environment: production
     needs: build
     env:
