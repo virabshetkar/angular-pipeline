@@ -1,7 +1,7 @@
 name: Redeploy
 
 on: 
-  workflow_call:
+  workflow_dispatch:
     inputs: 
       release_no: 
         description: "Release number to redeploy"
