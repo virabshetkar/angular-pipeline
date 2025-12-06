@@ -38,6 +38,8 @@ jobs:
     runs-on: [self-hosted, release]
     environment: production
     needs: build
+    env:
+      RELEASE_DIR: ${{ secrets.RELEASE_DIR }}
     steps: 
       - name: Print Hello
         run: echo "HELLO $USER"
@@ -47,8 +49,6 @@ jobs:
           name: dist-zip
           path: .
       - name: UnZip Artifact
-        env:
-          RELEASE_DIR: ${{ secrets.RELEASE_DIR }}
         run: |
           mkdir -p "$RELEASE_DIR/release-$GITHUB_RUN_NUMBER/"
           unzip ./dist.zip -d "$RELEASE_DIR/release-$GITHUB_RUN_NUMBER/"
