@@ -1,0 +1,10 @@
+name: Hello
+
+on: workflow_dispatch
+
+jobs: 
+  print-hello:
+    runs-on: self-hosted
+    steps:
+      - name: print
+        uses: virabshetkar/action-templates/main.yml@main
