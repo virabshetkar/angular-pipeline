@@ -4,8 +4,5 @@ on: workflow_dispatch
 
 jobs: 
   print-hello:
-    runs-on: self-hosted
-    steps:
-      - name: print
-        uses: virabshetkar/action-templates/.github/workflows/main.yml@master
+    uses: virabshetkar/action-templates/.github/workflows/main.yml@master
 
