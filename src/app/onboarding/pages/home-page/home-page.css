@@ -1,0 +1,33 @@
+form {
+  max-width: 300px;
+  margin-inline: auto;
+  margin-block: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #ddd;
+  padding: 2rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.form-control {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 0.25rem;
+
+  label {
+    place-self: center right;
+    &::after {
+      content: ':';
+    }
+  }
+
+  small.error {
+    grid-column: 2 / -1;
+    color: red;
+  }
+}
